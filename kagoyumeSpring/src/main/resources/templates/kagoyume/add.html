@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>買い物かごに追加</title>
+</head>
+<body>
+	<!-- 共通header -->
+	<div th:replace="common :: header"></div>
+	<div class="container-fluid">
+		<h1>買い物かごに追加</h1>
+		商品を買い物かごに追加しました！<br>
+
+		<form action="cart" method="GET">
+			<button type="submit" class="btn btn-outline-warning" >カートを見る</button>
+		</form>
+	</div>
+</body>
+</html>

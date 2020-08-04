@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>検索結果一覧</title>
+</head>
+<body>
+	<!--/* 共通header */-->
+	<div th:replace="common :: header"></div>
+	<div class="container-fluid">
+		<h1>検索結果</h1>
+		<p th:text="${query} + 'の検索結果：' + ${searchResultNum} + '件'">queryの検索結果：xxx件</p>
+		<table class="table table-hover" th:if="${searchResultNum!=0}">
+			<tr>
+				<th class="text-center">画像</th>
+				<th class="text-center">商品名</th>
+				<th class="text-center">金額</th>
+			</tr>
+			<tr th:each="product : ${productList}">
+		   		<td><img th:src="${product.imageURL}"></td>
+		   		<td><a th:href="@{'/kagoyume/item?id=' + ${product.proId}}" th:text="${product.proName}">link</a></td>
+		   		<td th:text="${product.price}"></td>
+			</tr>
+		</table>
+		<a class="btn btn-search" href="top" role="button" th:if="${searchResultNum==0}">再検索する！</a>
+	</div>
+</body>
+</html>

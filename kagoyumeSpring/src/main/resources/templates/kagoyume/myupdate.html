@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>かごゆめ</title>
+</head>
+<body >
+	<!--/* headerはtopにいければいいから、ここでは直書き */-->
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+			<h1><a href="top" class="heder-logo">かごゆめ</a></h1>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<div class="d-flex flex-column">
+			<h1>会員情報変更</h1>
+			<form class="form-horizontal" action="myUpdateResult" method="post" th:object="${userInfoForm}" ><br>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">ユーザー名</label>
+					<div class="col-xs-5">
+						<input type="text" name="name" class="form-control m-2" th:value="${userData.name}">
+						<p th:errors="*{name}" class="error-message m-2"></p>
+						<p th:if="${!nameCheck}" class="error-message m-2">この名前は登録できません</p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">パスワード</label>
+					<div class="col-xs-5">
+						<input type="text" name="password" class="form-control m-2" th:value="${userData.password}">
+						<p th:errors="*{password}" class="error-message m-2"></p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">メールアドレス</label>
+					<div class="col-xs-5">
+						<input type="text" name="mail" class="form-control m-2" th:value="${userData.mail}">
+						<p th:errors="*{mail}" class="error-message m-2"></p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">住所</label>
+					<div class="col-xs-5">
+						<input type="text" name="address" class="form-control m-2" th:value="${userData.address}">
+						<p th:errors="*{address}" class="error-message m-2"></p>
+					</div>
+				</div>
+				上記の内容で登録いたします。よろしいですか？<br>
+				<button type="submit" class="btn btn-outline-info m-2">はい</button>
+			</form>
+			<form action="mydata" method="get">
+				<button type="submit" class="btn btn-outline-secondary m-2">会員情報にもどる</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

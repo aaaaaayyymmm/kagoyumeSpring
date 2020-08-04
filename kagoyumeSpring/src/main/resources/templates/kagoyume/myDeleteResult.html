@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>退会完了</title>
+</head>
+<body >
+	<!--*/ headerはtopにいければいいから、ここでは直書き */-->
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+			<form th:action="@{/logout}" method="post">
+				<button type="submit" class="heder-logo" style="font-size: 200%;">かごゆめ</button>
+			</form>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<h1>退会しました</h1>
+	</div>
+</body>
+</html>

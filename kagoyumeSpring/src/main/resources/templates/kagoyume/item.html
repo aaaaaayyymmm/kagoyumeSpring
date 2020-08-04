@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>商品詳細</title>
+	</head>
+<body>
+	<!--/* 共通header */-->
+	<div th:replace="common :: header"></div>
+	<div class="container-fluid">
+		<h1>商品詳細</h1>
+		<img th:src="${detail.imageURL}"><br>
+		<h3 th:text="${detail.proName}">proname</h3>
+		<form action="add" method="POST" >
+			<button type="submit" class="btn btn-search m-2" >カートに入れる</button>
+			<input type="hidden" name="proId" th:value="${detail.proId}">
+		</form>
+		<p th:text="'￥' + ${detail.price}">price</p>
+		<p th:text="'レビュー：' + ${detail.review} + '/5.0'">review</p>
+		<p>商品説明</p>
+		<th:block th:if="${detail.caption}">
+			<th:block th:each="str : ${detail.caption.split('\r\n|\r|\n|<br>|<br/>', -1)}">
+				<th:block th:text="${str}"/><br/>
+			</th:block>
+		</th:block>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>登録内容確認</title>
+	</head>
+<body>
+	<!--/* headerはtopにいければいいから、ここでは直書き */-->
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+			<h1><a href="top" class="heder-logo">かごゆめ</a></h1>
+		</nav>
+	</header>
+	<div class="container-fluid" th:object="${userInfoForm}">
+		<h1>登録確認</h1>
+		<p th:text="'名前：' + *{name}">name</p>
+		<p th:text="'パスワード：' + *{password}">pass</p>
+		<p th:text="'メールアドレス：' + *{mail}">mail</p>
+		<p th:text="'住所：' + *{address}">address</p>
+		上記の内容で登録いたします。よろしいですか？
+		<div class="form-inline">
+			<form action="registrationComplete" method="post">
+				<button type="submit" class="btn btn-outline-info m-2">はい</button>
+				<input type="hidden" name="name" th:value="*{name}">
+				<input type="hidden" name="password" th:value="*{password}">
+				<input type="hidden" name="mail" th:value="*{mail}">
+				<input type="hidden" name="address" th:value="*{address}">
+			</form>
+			<form action="registration" method="post">
+				<button type="submit" class="btn btn-outline-secondary m-2">いいえ</button>
+			</form>
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>買い物かご</title>
+	</head>
+<body>
+	<!--/* 共通header */-->
+	<div th:replace="common :: header"></div>
+	<div class="container-fluid">
+		<h1>買い物かご</h1>
+		<form action="deleteProduct" method="GET" >
+			<table class="table table-striped">
+				<tr th:each="product : ${cart}">
+					<td><img th:src="${product.imageURL}"></td>
+					<td><a th:href="@{'/kagoyume/item?id=' + ${product.proId}}" th:text="${product.proName}">link</a></td>
+					<td th:text="${'￥' + product.price}"></td>
+					<td><button type="submit" class="btn btn-secondary btn-sm" name="deleteProduct" th:value="${product.proId}">削除</button></td>
+				</tr>
+			 </table>
+			<p>合計金額：[[${total}]]円</p>
+		</form>
+		<form action="buyConfirm" method="GET">
+			<button type="submit" class="btn btn-search" th:if="${total>0}">購入する</button>
+		</form>
+		<a class="btn btn-search" href="top" role="button" th:if="${total==0}">商品を探す！</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>削除確認</title>
+</head>
+<body>
+	<!--/* 共通header */-->
+	<div th:replace="common :: header"></div>
+	<div class="container-fluid">
+		<h1>削除確認</h1>
+			<p th:text="'名前：' + ${userData.name}">name</p>
+			<p th:text="'パスワード：' + ${userData.password}">pass</p>
+			<p th:text="'メールアドレス：' + ${userData.mail}">mail</p>
+			<p th:text="'住所：' + ${userData.address}">address</p>
+		本当に退会しますか？
+		<div class="form-inline">
+			<form action="myDeleteResult" method="post">
+				<button type="submit" class="btn btn-outline-secondary m-2">はい</button>
+			</form>
+			<form action="top" method="get">
+				<button type="submit" class="btn btn-outline-secondary m-2">いいえ</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

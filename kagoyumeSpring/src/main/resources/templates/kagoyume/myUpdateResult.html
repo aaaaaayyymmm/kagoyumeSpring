@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>会員登録完了</title>
+</head>
+<body >
+	<!-- 共通header -->
+	<div th:replace="common :: header"></div>
+	<div class="container-fluid">
+		<h1>変更完了</h1>
+		<p th:text="'名前：' + ${userData.name}">name</p>
+		<p th:text="'パスワード：' + ${userData.password}">pass</p>
+		<p th:text="'メールアドレス：' + ${userData.mail}">mail</p>
+		<p th:text="'住所：' + ${userData.address}">address</p>
+		上記の内容で登録しました！
+	</div>
+</body>
+</html>

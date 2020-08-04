@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<title>新規会員登録</title>
+</head>
+<body >
+	<!--/* headerはtopにいければいいから、ここでは直書き */-->
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+			<h1><a href="top" class="heder-logo">かごゆめ</a></h1>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<div class="d-flex flex-column">
+			<h1>新規会員登録</h1>
+			<h3>"かごゆめ"は好きなものを好きなだけ買い物した気分になれるサービスだよ！</h3>
+			<form class="form-horizontal" action="registrationConfirm" method="post" th:object="${userInfoForm}" ><br>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">ユーザー名</label>
+					<div class="col-xs-5">
+						<input type="text" name="name" class="form-control m-2" th:value="${userInfoForm.name}">
+						<p th:errors="*{name}" class="error-message m-2"></p>
+						<p th:if="${!nameCheck}" class="error-message m-2">この名前は登録できません</p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">パスワード</label>
+					<div class="col-xs-5">
+						<input type="password" name="password" class="form-control m-2" th:value="${userInfoForm.password}">
+						<p th:errors="*{password}" class="error-message m-2"></p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">メールアドレス</label>
+					<div class="col-xs-5">
+						<input type="text" name="mail" class="form-control m-2" th:value="${userInfoForm.mail}">
+						<p th:errors="*{mail}" class="error-message m-2"></p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start align-items-baseline">
+					<label class="control-label col-xs-2">住所</label>
+					<div class="col-xs-5">
+						<input type="text" name="address" class="form-control m-2" th:value="${userInfoForm.address}">
+						<p th:errors="*{address}" class="error-message m-2"></p>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-start">
+					<button type="submit" class="btn btn-outline-info">確認画面へ</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>

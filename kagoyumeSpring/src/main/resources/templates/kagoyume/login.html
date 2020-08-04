@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: meta_header()">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/common.css" />
+	<title>ログイン</title>
+</head>
+<body>
+<!--/* headerはtopにいければいいから、login画面では直書き */-->
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+			<h1><a href="top" class="heder-logo">かごゆめ</a></h1>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<div class="d-flex flex-column">
+			<div class="d-flex justify-content-center">
+				<h1>ログイン</h1>
+			</div>
+			<form th:action="@{/sign_in}" method="post" class="">
+
+				<div class="form-group d-flex justify-content-center align-items-baseline">
+					<label class="control-label col-xs-2">ユーザー名</label>
+					<div class="col-xs-5">
+						<input type="text" name="name" class="form-control m-3" required>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-center align-items-baseline">
+					<label class="control-label col-xs-2">パスワード</label>
+					<div class="col-xs-5">
+						<input type="password" name="password" class="form-control m-3" required>
+					</div>
+				</div>
+				<div class="form-group d-flex justify-content-center">
+					<button type="submit" class="btn btn-primary">ログイン</button>
+				</div>
+			</form>
+			<form action="registration" method="post" class="d-flex justify-content-center">
+					<button type="submit" class="btn btn-search">新規会員登録</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
